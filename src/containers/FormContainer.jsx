@@ -18,7 +18,7 @@ class FormContainer extends Component {
       this.handleMission = this.handleMission.bind(this);
       this.handleIsMultiple = this.handleIsMultiple.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      // this.handleClearForm = this.handleClearForm.bind(this);
+      this.handleClose = this.handleClose.bind(this);
   }
     handleIsMultiple(e) {
         let target = e.target;
@@ -82,8 +82,11 @@ class FormContainer extends Component {
           })
       } catch (e) {
           this.setState({ e });
-          alert('Вы допустили ошибку, пользователь не добавлен')
+          alert('Ввод не корректен, пользователь не добавлен')
       }
+  }
+  handleClose(){
+      this.props.handleModal()
   }
   render() {
           return (
@@ -95,8 +98,7 @@ class FormContainer extends Component {
                    value={this.props.newUser.name}
                    placeholder = {'Введите имя'}
                    handleChange = {this.handleName}
-                    required
-
+                   required
                    />
           <Input inputType={'Date'}
                  name={'date'}
@@ -137,6 +139,11 @@ class FormContainer extends Component {
               title = {'Принять'}
 
           /> { /*Submit */ }
+                <Button
+                    action = {this.handleClose}
+                    type = {'secondary'}
+                    title = {'Закрыть'}
+                /> {/* Clear the form */}
             </div>
         </form>
 
