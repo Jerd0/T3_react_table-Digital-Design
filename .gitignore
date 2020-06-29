@@ -26,3 +26,4 @@ yarn-error.log*
 /fromMe
 package-lock.json
 /public/
+/test-project
