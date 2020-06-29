@@ -42,7 +42,15 @@ export default props => (
                checked={item.isMultiple}
                 /></td>
                 <td><button className="btn btn-outline-danger" onClick={props.onRowSelect.bind(null, item)}>X</button></td>
-          </tr>) : <div>Нет эллементов</div>}
+              </tr>) : window.location.reload()
+            //   <div >
+            // <p>Вы попали в неприятную ситуацию,</p>
+            // <p>не стоило удалять этого пользователя</p>
+            // <p>Нажмите на страницу</p>
+            // <p>а если осталась всего одна, тогда на поиск</p>
+            // <p>И всё починится</p>
+            // </div>
+            }
     </tbody>
   </table>
 );

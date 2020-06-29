@@ -133,8 +133,7 @@ class App extends Component {
               sort={this.state.sort}
               sortField={this.state.sortField}
               onRowSelect={this.onRowSelect}
-              delet={this.state.data}
-              onDelete={this.handleFormDelete}
+              add={this.handleAdd}
             />
           </React.Fragment>
 
