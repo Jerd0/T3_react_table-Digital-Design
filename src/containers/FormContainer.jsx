@@ -78,7 +78,7 @@ class FormContainer extends Component {
                   'Content-Type': 'application/json'
               },
           }).then(response => {
-              response.json(this.props.handleModal())
+              response.json(this.props.fetchData)
           })
       } catch (e) {
           this.setState({ e });
@@ -136,7 +136,7 @@ class FormContainer extends Component {
           <Button
               action = {this.handleFormSubmit}
               type = {'primary'}
-              title = {'Принять'}
+              title = {'Добавить'}
 
           /> { /*Submit */ }
                 <Button
