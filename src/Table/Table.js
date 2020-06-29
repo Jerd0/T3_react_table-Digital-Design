@@ -1,6 +1,6 @@
 import React from 'react';
-import {format} from 'date-fns'
-
+import {format, addSeconds} from 'date-fns'
+const date=new Date(0)
 export default props => (
   <table className="table" >
     <thead className="text-center"  style={{ cursor: "pointer" }}>
@@ -33,7 +33,7 @@ export default props => (
           {props.data.map(item =>
               <tr key={item.id}>
             <td>{item.name}</td>
-                <td>{(typeof (item.date))!=="number" ? item.days : format(item.date, 'dd-MM-yyyy') }</td>
+                <td>{(typeof (item.date))!=="number" ? 'ошибка типа' : format (addSeconds(date, item.date), 'dd-MM-yyyy') }</td>
                 <td>{item.days}</td>
             <td>{item.mission}</td>
            <td className="text-center"><input
