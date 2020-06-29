@@ -3,6 +3,9 @@
 
 Для запуска серверa использвался https://github.com/typicode/json-server
 
+
+ВАЖНО запускать сервер перым либо менять url
+
 ###`cd test-server`
 
 ###`npm install -g json-server`
