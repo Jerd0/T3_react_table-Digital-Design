@@ -97,7 +97,7 @@ class App extends Component {
   }
 
   render() {
-    const pageSize = 50;
+    const pageSize = 10;
     if(!this.state.isModeSelected){
       return (
         <div className="container">
@@ -117,17 +117,13 @@ class App extends Component {
         ? <Loader />
         : <React.Fragment>
             <TableSearch onSearch={this.searchHandler}/>
-                {this.state.showModal && <FormContainer
-                    handleModal={this.handleModal}/>}
-
-                {!this.state.showModal ?
-                    <button style={bottomStyle} onClick={this.handleModal} className="btn btn-outline-primary">Открыть меню добавления</button>
-                    :
-                    <button style={bottomStyle} onClick={this.handleModal} className="btn btn-outline-primary">Закрыть и добавить</button>
-                }
+                {this.state.showModal && <FormContainer update={this.state.update} newUser={this.state.data}
+                                                        handleModal={this.handleModal}/>}
+                {!this.state.showModal ? <button style={bottomStyle} onClick={this.handleModal}
+                        className="btn btn-outline-primary">Добавить</button> : null}
 
 
-              <Table
+                <Table
               data={displayData}
               onSort={this.onSort}
               sort={this.state.sort}

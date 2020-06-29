@@ -29,8 +29,8 @@ export default props => (
         </th>
       </tr>
     </thead>
-    <tbody className="text-left">
-          {props.data.map(item =>
+    <tbody className="text-center">
+          {props.data ? props.data.map(item =>
               <tr key={item.id}>
             <td>{item.name}</td>
                 <td>{(typeof (item.date))!=="number" ? 'ошибка типа' : format (addSeconds(date, item.date), 'dd-MM-yyyy') }</td>
@@ -42,7 +42,7 @@ export default props => (
                checked={item.isMultiple}
                 /></td>
                 <td><button className="btn btn-outline-danger" onClick={props.onRowSelect.bind(null, item)}>X</button></td>
-          </tr>)}
+          </tr>) : <div>Нет эллементов</div>}
     </tbody>
   </table>
 );

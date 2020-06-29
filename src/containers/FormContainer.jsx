@@ -8,11 +8,7 @@ class FormContainer extends Component {
     super(props);
       this.state = {
           newUser: {
-              name: '',
-              date: '',
-              days: '',
-              mission: '',
-              isMultiple: true
+              isMultiple: false
           },
           error: null
       }
@@ -22,7 +18,7 @@ class FormContainer extends Component {
       this.handleMission = this.handleMission.bind(this);
       this.handleIsMultiple = this.handleIsMultiple.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.handleClearForm = this.handleClearForm.bind(this);
+      // this.handleClearForm = this.handleClearForm.bind(this);
   }
     handleIsMultiple(e) {
         let target = e.target;
@@ -70,7 +66,7 @@ class FormContainer extends Component {
           const regExpStr=/[A-Za-zА-яа-яäöüßÄÖÜẞ ]/gi
           const regExpMis=/./gi
           let userData = this.state.newUser;
-          userData.date = parseInt(format(new Date(userData.date), 'T'))
+          userData.date = parseInt(format(new Date(userData.date), 't'))
           userData.days=userData.days.match(regExp).join('')
           userData.name=userData.name.match(regExpStr).join('')
           userData.mission=userData.mission.match(regExpMis).join('')
@@ -82,34 +78,12 @@ class FormContainer extends Component {
                   'Content-Type': 'application/json'
               },
           }).then(response => {
-              response.json()
-          })
-          e.preventDefault();
-          this.setState({
-              newUser: {
-                  name: '',
-                  date: '',
-                  days: '',
-                  mission: '',
-                  isMultiple: false,
-              }
+              response.json(this.props.handleModal())
           })
       } catch (e) {
           this.setState({ e });
           alert('Вы допустили ошибку, пользователь не добавлен')
       }
-  }
-  handleClearForm(e) {
-      e.preventDefault();
-      this.setState(  {
-          newUser: {
-              name: '',
-              date: '',
-              days: '',
-              mission: '',
-              isMultiple: false,
-          }
-      })
   }
   render() {
           return (
@@ -118,16 +92,16 @@ class FormContainer extends Component {
             <Input inputType={'text'}
                    title= {'Имя'}
                    name= {'name'}
-                   value={this.state.newUser.name}
+                   value={this.props.newUser.name}
                    placeholder = {'Введите имя'}
                    handleChange = {this.handleName}
-                   pattern=".{1,}" required
+                    required
 
                    />
           <Input inputType={'Date'}
                  name={'date'}
                  title= {'Первый полёт'}
-                 value={this.state.newUser.date}
+                 value={this.props.newUser.date}
                  placeholder = {'Первый полёт'}
                  handleChange={this.handleDate}
                  required
@@ -135,15 +109,15 @@ class FormContainer extends Component {
             <Input inputType={'text'}
                    name={'mission'}
                    title= {'Название миссии'}
-                   value={this.state.newUser.mission}
+                   value={this.props.newUser.mission}
                    placeholder = {'Введите название миссии'}
                    handleChange={this.handleMission}
-                   pattern=".{1,}" required
+                   required
             />
             <Input inputType={'number'}
                    name={'days'}
                    title= {'Дней в космосе'}
-                   value={this.state.newUser.days}
+                   value={this.props.newUser.days}
                    placeholder = {'Введите количество дней в космосе'}
                    handleChange={this.handleDays}
                    required
@@ -151,7 +125,7 @@ class FormContainer extends Component {
             <Input inputType={'checkbox'}
                 name={'isMultiple'}
                 title= {'Повторные полёты'}
-                checked={this.state.newUser.isMultiple}
+                checked={this.props.newUser.isMultiple}
                 onChange={this.handleIsMultiple}
                 />
             </div>
@@ -163,12 +137,6 @@ class FormContainer extends Component {
               title = {'Принять'}
 
           /> { /*Submit */ }
-
-          <Button
-            action = {this.handleClearForm}
-            type = {'secondary'}
-            title = {'Очистить'}
-          /> {/* Clear the form */}
             </div>
         </form>
 
