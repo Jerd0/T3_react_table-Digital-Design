@@ -121,8 +121,7 @@ class App extends Component {
         ? <Loader />
         : <React.Fragment>
             <TableSearch onSearch={this.searchHandler}/>
-                {this.state.showModal && <FormContainer newUser={this.state.data} add={this.handleAdd}
-                                                        handleModal={this.handleModal}/>}
+                {this.state.showModal && <FormContainer url={url} newUser={this.state.data} add={this.handleAdd} handleModal={this.handleModal}/>}
                 {!this.state.showModal ? <button style={bottomStyle} onClick={this.handleModal}
                         className="btn btn-outline-primary">Добавить</button> : null}
 

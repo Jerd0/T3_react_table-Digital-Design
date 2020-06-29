@@ -69,7 +69,7 @@ class FormContainer extends Component {
           userData.days=parseInt(userData.days.match(regExp).join(''))
           userData.name=userData.name.match(regExpStr).join('')
           userData.mission=userData.mission.match(regExpMis).join('')
-          fetch('http://localhost:3000/users/', {
+          fetch(this.props.url, {
               method: "POST",
               body: JSON.stringify(userData),
               headers: {
