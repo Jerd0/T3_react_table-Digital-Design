@@ -51,6 +51,10 @@ class App extends Component {
   handleModal = () => {
     this.setState({showModal: !this.state.showModal});
   }
+  handleAdd=()=>{
+      this.setState({Add:!this.state.add})
+      this.fetchData()
+  }
   onSort = sortField => {
     const cloneData = this.state.data.concat();
     const sort = this.state.sort === 'asc' ? 'desc' : 'asc';
@@ -117,7 +121,7 @@ class App extends Component {
         ? <Loader />
         : <React.Fragment>
             <TableSearch onSearch={this.searchHandler}/>
-                {this.state.showModal && <FormContainer update={this.state.update} newUser={this.state.data} feetchData={this.fetchData()}
+                {this.state.showModal && <FormContainer newUser={this.state.data} add={this.handleAdd}
                                                         handleModal={this.handleModal}/>}
                 {!this.state.showModal ? <button style={bottomStyle} onClick={this.handleModal}
                         className="btn btn-outline-primary">Добавить</button> : null}

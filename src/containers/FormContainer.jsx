@@ -9,7 +9,8 @@ class FormContainer extends Component {
           newUser: {
               isMultiple: false
           },
-          error: null
+          error: null,
+          update:false
       }
       this.handleDate = this.handleDate.bind(this);
       this.handleName = this.handleName.bind(this);
@@ -57,9 +58,6 @@ class FormContainer extends Component {
       }))
 
   }
-hendleFormReset=()=>{
-    this.form.reset()
-}
   handleFormSubmit(e) {
       try {
           e.preventDefault();
@@ -79,9 +77,8 @@ hendleFormReset=()=>{
                   'Content-Type': 'application/json'
               },
           }).then(response => {
-              response.json(this.props.fetchData).then(this.form.reset())
-          })
-
+              response.json().then(this.form.reset())
+              }).then( this.props.add)
       } catch (e) {
           this.setState({ e });
           alert('Ввод не корректен, пользователь не добавлен')
