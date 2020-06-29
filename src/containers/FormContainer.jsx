@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {format} from 'date-fns'
 import Input from '../components/Input';
 import Button from '../components/Button'
-
 class FormContainer extends Component {  
   constructor(props) {
     super(props);
@@ -58,7 +57,9 @@ class FormContainer extends Component {
       }))
 
   }
-
+hendleFormReset=()=>{
+    this.form.reset()
+}
   handleFormSubmit(e) {
       try {
           e.preventDefault();
@@ -78,8 +79,9 @@ class FormContainer extends Component {
                   'Content-Type': 'application/json'
               },
           }).then(response => {
-              response.json(this.props.fetchData)
+              response.json(this.props.fetchData).then(this.form.reset())
           })
+
       } catch (e) {
           this.setState({ e });
           alert('Ввод не корректен, пользователь не добавлен')
@@ -90,7 +92,7 @@ class FormContainer extends Component {
   }
   render() {
           return (
-        <form className="container-fluid" style={{border: '2px solid grey'}}  onSubmit={this.handleFormSubmit}>
+        <form ref={form => this.form = form} className="container-fluid" style={{border: '2px solid grey'}}>
             <div style={{display:'flex', width:'100%'}}>
             <Input inputType={'text'}
                    title= {'Имя'}

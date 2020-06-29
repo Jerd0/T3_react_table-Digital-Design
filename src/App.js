@@ -8,6 +8,7 @@ import FormContainer from './containers/FormContainer';
 const bottomStyle = {
     margin:'1em'
 };
+const url =`http://localhost:3000/users/`
 class App extends Component {
 
   state ={
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   async fetchData() {
-    const response = await fetch('http://localhost:3000/users')
+    const response = await fetch(url)
     const data = await response.json()
     this.setState({
       isLoading: false,
@@ -32,7 +33,7 @@ class App extends Component {
   }
   handleFormDelete(id) {
     let userData = id;
-    fetch(`http://localhost:3000/users/${userData.id}`,{
+    fetch(`${url}${userData.id}`,{
       method: "DELETE",
       body: JSON.stringify(userData),
       headers: {
