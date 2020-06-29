@@ -68,7 +68,7 @@ hendleFormReset=()=>{
           const regExpMis=/./gi
           let userData = this.state.newUser;
           userData.date = parseInt(format(new Date(userData.date), 't'))
-          userData.days=userData.days.match(regExp).join('')
+          userData.days=parseInt(userData.days.match(regExp).join(''))
           userData.name=userData.name.match(regExpStr).join('')
           userData.mission=userData.mission.match(regExpMis).join('')
           fetch('http://localhost:3000/users/', {
