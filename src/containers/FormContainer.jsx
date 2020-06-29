@@ -90,7 +90,7 @@ class FormContainer extends Component {
   render() {
           return (
         <form ref={form => this.form = form} className="container-fluid" style={{border: '2px solid grey'}}>
-            <div style={{display:'flex', width:'100%'}}>
+            <div style={{display:'flex', width:'100%', justifyContent: 'space-evenly'}}>
             <Input inputType={'text'}
                    title= {'Имя'}
                    name= {'name'}
@@ -130,15 +130,17 @@ class FormContainer extends Component {
                 onChange={this.handleIsMultiple}
                 />
             </div>
-            <div style={{display:'flex', width:'100%', justifyContent: 'space-around', marginBottom:'1%'}}>
+            <div style={{display:'flex', width:'100%', justifyContent: 'end', marginBottom:'1%'}}>
 
           <Button
+              style={{marginRight:'1%'}}
               action = {this.handleFormSubmit}
               type = {'primary'}
               title = {'Добавить'}
 
           /> { /*Submit */ }
                 <Button
+
                     action = {this.handleClose}
                     type = {'secondary'}
                     title = {'Закрыть'}
