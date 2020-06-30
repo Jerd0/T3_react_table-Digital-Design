@@ -27,4 +27,5 @@ yarn-error.log*
 package-lock.json
 /public/
 /test-project
-/test-project/data.json
+/test-project/data.json'.idea' 
+'.idea' 
