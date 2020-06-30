@@ -82,6 +82,7 @@ class FormContainer extends Component {
       } catch (e) {
           this.setState({ e });
           alert('Ввод не корректен, пользователь не добавлен')
+          this.props.handleModal()
       }
   }
   handleClose(){
