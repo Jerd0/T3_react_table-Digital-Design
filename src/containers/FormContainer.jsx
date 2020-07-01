@@ -145,7 +145,7 @@ class FormContainer extends Component {
 
     render() {
         return (
-            <form ref={form => this.form = form} className="container-fluid" style={{border: '2px solid grey'}}>
+            <form className="container-fluid" style={{border: '2px solid grey'}}>
                 <div style={{display: 'flex', width: '100%', justifyContent: 'space-evenly'}}>
                     <Input inputType={'text'}
                            title={'Имя'}
