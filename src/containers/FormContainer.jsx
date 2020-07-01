@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {format} from 'date-fns'
 import Input from '../components/Input';
-import Button from '../components/Button'
 
 class FormContainer extends Component {
     constructor(props) {
@@ -188,25 +187,13 @@ class FormContainer extends Component {
                     />
                 </div>
                 <div style={{display: 'flex', width: '100%', justifyContent: 'end', marginBottom: '1%'}}>
-
-                    <Button
-                        style={{marginRight: '1%'}}
-                        action={this.handleFormSubmit}
-                        type={'primary'}
-                        title={'Добавить'}
-                    /> { /*Submit */}
-                    <Button
-                        style={{marginRight: '1%'}}
-                        action={this.handleClearForm}
-                        type={'secondary'}
-                        title={'Очистить'}
-                    /> {/* clear the form */}
-                    <Button
-                        action={this.handleClose}
-                        type={'secondary'}
-                        title={'Закрыть'}
-                    /> {/* Сlose the form */}
-
+                    <button style={{marginRight: '1%'}} onClick={this.handleFormSubmit}
+                            className={'btn btn-primary'}>Добавить
+                    </button>
+                    <button style={{marginRight: '1%'}} onClick={this.handleClearForm}
+                            className={'btn btn-secondary'}>Очистить
+                    </button>
+                    <button onClick={this.handleClose} className={'btn btn-danger'}>Закрыть</button>
                 </div>
             </form>
 
